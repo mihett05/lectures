@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Menu from './Menu';
-import { CurrentFilexContext, makeTitleFromFile } from './current-file';
+import { CurrentFilexContext } from '../lib/current-file';
+import { makeTitleFromFile } from '../lib/title';
 
 interface LayoutProps {
   children?: React.ReactNode;

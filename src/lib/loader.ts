@@ -1,8 +1,7 @@
 import type { CurrentFile } from './current-file';
 
 export const loadFile = async (folder: string, file: string): Promise<CurrentFile> => {
-  const filePath = (await import(/* @vite-ignore */ `/${folder}/${file}.md`)).default;
-  const text = await (await fetch(filePath)).text();
+  const text = await (await fetch(`/${folder}/${file}.md`)).text();
   return {
     folder,
     file,

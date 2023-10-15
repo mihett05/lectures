@@ -10,10 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.8",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.13",
+    "@mui/material": "^5.14.12",
     "@types/katex": "^0.16.3",
     "@types/markdown-it": "^13.0.2",
-    "bootstrap": "^5.3.2",
     "katex": "^0.16.9",
     "markdown-it": "^13.0.2",
     "markdown-it-texmath": "^1.0.0",

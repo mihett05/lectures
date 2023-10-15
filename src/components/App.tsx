@@ -4,9 +4,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import HomePage from '../pages/home';
 import LecturePage from '../pages/lecture';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '@popperjs/core';
 import CurrentFileProvider from '../lib/current-file';
+import { CssBaseline } from '@mui/material';
 
 const router = createBrowserRouter([
   {
@@ -21,9 +20,12 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <CurrentFileProvider>
-      <RouterProvider router={router} />
-    </CurrentFileProvider>
+    <>
+      <CssBaseline />
+      <CurrentFileProvider>
+        <RouterProvider router={router} />
+      </CurrentFileProvider>
+    </>
   );
 }
 

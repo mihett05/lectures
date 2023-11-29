@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import Menu from './Menu';
 import { CurrentFilexContext } from '../lib/current-file';
 import { makeTitleFromFile } from '../lib/title';
-import { AppBar, Toolbar, IconButton, Typography, Box, Divider, Drawer } from '@mui/material';
+import { AppBar, Toolbar, IconButton, Typography, Box, Divider, Drawer, useTheme, useMediaQuery } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import MenuIcon from '@mui/icons-material/Menu';
 
@@ -13,12 +13,12 @@ interface DrawerMenuProps {
 
 function DrawerMenu({ handleDrawerToggle }: DrawerMenuProps) {
   return (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box sx={{ textAlign: 'center' }}>
       <Typography variant="h6" sx={{ my: 2 }}>
-        MUI
+        Лекции
       </Typography>
       <Divider />
-      <Menu />
+      <Menu onOpen={handleDrawerToggle} />
     </Box>
   );
 }
@@ -28,6 +28,8 @@ interface LayoutProps {
 }
 
 function Layout({ children }: LayoutProps) {
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.down('sm'));
   const [drawerOpen, setDrawerOpen] = useState<boolean>(false);
   const { file } = useContext(CurrentFilexContext);
 
@@ -50,7 +52,7 @@ function Layout({ children }: LayoutProps) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            {file === null ? 'Лекции' : makeTitleFromFile(file)}
+            {file === null ? 'Лекции' : makeTitleFromFile(file.folder, file.file)}
           </Typography>
         </Toolbar>
       </AppBar>
@@ -79,7 +81,7 @@ function Layout({ children }: LayoutProps) {
         >
           <Menu />
         </Grid>
-        <Grid xs={10}>{children}</Grid>
+        <Grid xs={matches ? 12 : 10}>{children}</Grid>
       </Grid>
     </>
   );

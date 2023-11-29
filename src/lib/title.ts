@@ -1,6 +1,4 @@
-import type { CurrentFile } from './current-file';
-
-const FOLDERS_TRANSLATIONS = {
+export const FOLDERS_TRANSLATIONS: { [key: string]: string } = {
   angem: 'Аналитическая геометрия',
   dm: 'Дискретная математика',
   history: 'История',
@@ -12,7 +10,7 @@ const parseDate = (fileName: string) => {
   return `${String(day).padStart(2, '0')}.${String(month).padStart(2, '0')}`;
 };
 
-export const makeTitleFromFile = (file: CurrentFile) =>
+export const makeTitleFromFile = (folder: string, filename: string) =>
   `${
-    (FOLDERS_TRANSLATIONS[file.folder as keyof typeof FOLDERS_TRANSLATIONS] as string) || 'Неизвестные предмет'
-  } ${parseDate(file.file)}`;
+    (FOLDERS_TRANSLATIONS[folder as keyof typeof FOLDERS_TRANSLATIONS] as string) || 'Неизвестные предмет'
+  } ${parseDate(filename)}`;

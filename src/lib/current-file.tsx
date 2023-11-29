@@ -4,6 +4,7 @@ export interface CurrentFile {
   folder: string;
   file: string;
   text: string;
+  ext: string;
 }
 
 interface ICurrentFileContext {
